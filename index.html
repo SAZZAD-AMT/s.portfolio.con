@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sazzad Hossen - Portfolio</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .w3-row-padding img {
+            margin-bottom: 12px;
+        }
+
+        /* Set the width of the sidebar to 250px */
+        .w3-sidebar {
+            width: 250px;
+            background: #222;
+        }
+
+        /* Add a left margin to the "page content" that matches the width of the sidebar (250px) */
+        #main {
+            margin-left: 250px;
+        }
+
+        /* Remove margins from "page content" on small screens */
+        @media only screen and (max-width: 600px) {
+            #main {
+                margin-left: 0;
+            }
+
+            .w3-sidebar {
+                width: 0;
+            }
+        }
+        /* header */
+        .header-container {
+            background-color: #000;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .header-content {
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    
+        .header-text {
+            width: 50%;
+            padding-right: 20px;
+        }
+    
+        .header-title {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+    
+        .header-subtitle {
+            font-size: 1.2rem;
+            color: #999;
+        }
+    
+        .header-image {
+            width: 300px;
+            height: 400px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            margin-top: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+    
+        .hire-me {
+            width: 50%;
+            padding-left: 20px;
+        }
+    
+        .hire-me-button {
+            background-color: #3498db;
+            color: #fff;
+            font-size: 1.2rem;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            display: block;
+        }
+    
+        .hire-me-button:hover {
+            background-color: #1e77d0;
+        }
+    
+        .header-container:hover .header-image {
+            transform: scale(1.05);
+        }
+
+        /* Style the education section */
+        #education {
+            background-color: #000;
+            color: #fff;
+            padding: 64px 0;
+        }
+
+        .w3-table-all {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .w3-table-all th, .w3-table-all td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #fff;
+        }
+
+        .w3-table-all th {
+            background-color: #333;
+        }
+
+        .w3-table-all tr:nth-child(even) {
+            background-color: #222;
+        }
+
+        .w3-table-all tr:nth-child(odd) {
+            background-color: #111;
+        }
+
+        /* Style the headings */
+        .w3-text-light-grey {
+            color: #999;
+        }
+
+        .w3-opacity {
+            opacity: 0.6;
+        }
+        /* Style for skill ratings */
+        .skill {
+            margin-bottom: 16px;
+        }
+
+        .skill-name {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .skill-rating {
+            background-color: #ddd;
+            height: 20px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .skill-level {
+            height: 100%;
+            background-color: #3498db; /* Adjust the color as needed */
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="w3-black">
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+    <!-- Avatar image in top left corner -->
+    
+    <a href="#aboutme" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-user w3-xxlarge"></i>
+        <p>ABOUT ME</p>
+    </a>
+    <a href="#skills" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-code w3-xxlarge"></i>
+        <p>SKILLS</p>
+    </a>
+    <a href="#education" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-graduation-cap w3-xxlarge"></i>
+        <p>EDUCATION</p>
+      </a>
+    <a href="#portfolio" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-briefcase w3-xxlarge"></i>
+        <p>PORTFOLIO</p>
+    </a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-envelope w3-xxlarge"></i>
+        <p>CONTACT</p>
+    </a>
+</nav>
+
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+    <!-- Header/Home -->
+    <header class="header-container" id="aboutme">
+        <div class="header-content">
+            <div class="header-text">
+                <h1 class="header-title">I'm Sazzad Hossen</h1>
+                <p class="header-subtitle">Computer Science & Engineering</p>
+                <p>
+                    May ask me any question, I may not be able to answer it but I will definitely find 
+                    the answer - This is my SPEED.
+                <p>Graduate of Computer Science and Engineering with experience working across 
+                the Computer Vision, Machine Learning and Big Data. Eager to contribute to an 
+                accomplished team, fostering personal growth through interaction with seasoned 
+                professionals, and capitalizing on my track record of successfully spearheading 
+                diverse projects in the field.</p>
+          
+               </p>
+                <a href="mailto:sazzad01794@gmail.com" class="hire-me-button">Hire me</a>
+            </div>
+            <div class="hire-me">
+                <img src="/qw.jpg" alt="Sazzad Hossen" class="header-image">
+            </div>
+        </div>
+    </header>
+    
+
+
+    <!-- Skills Section -->
+    
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="skill-ratings">
+        <h2 class="w3-text-light-grey">SKILLS</h2>
+        <hr style="width:200px" class="w3-opacity">
+        <div class="w3-row-padding">
+            <div class="w3-half">
+                <h3>Programming Languages</h3>
+                
+                <div class="skill">
+                    <span class="skill-name">Python</span>
+                    <div class="skill-rating">
+                        <div class="skill-level" style="width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">JAVA</span>
+                    <div class="skill-rating">
+                        <div class="skill-level" style="width: 60%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">C++</span>
+                    <div class="skill-rating">
+                        <div class="skill-level" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">R</span>
+                    <div class="skill-rating">
+                        <div class="skill-level" style="width: 70%;"></div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="w3-half">
+                <h3>Web Development</h3>
+                
+                <div class="skill">
+                    <span class="skill-name">HTML, CSS, JavaScript</span>
+                    <div class="skill-rating">
+                        <div class="skill-level" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">BOOTSTRAP</span>
+                    <div class="skill-rating">
+                        <div class="skill-level" style="width: 70%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">D-JANGO</span>
+                    <div class="skill-rating">
+                        <div class="skill-level" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">FLASK</span>
+                    <div class="skill-rating">
+                        <div class="skill-level" style="width: 75%;"></div>
+                    </div>
+                </div>
+              
+            </div>
+            <div class="w3-half">
+                <h3>Data Analysis</h3>
+                
+                <div class="skill">
+                    <span class="skill-name">Data Visualization</span>
+                    <div class="skill-rating">
+                        <div class="skill-level" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">Machine Learning</span>
+                    <div class="skill-rating">
+                        <div class="skill-level" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">Data Cleaning</span>
+                    <div class="skill-rating">
+                        <div class="skill-level" style="width: 80%;"></div>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="w3-half">
+                <h3>Other Skills</h3>
+                
+                <div class="skill">
+                    <span class="skill-name">Communication/Team Work</span>
+                    <div class="skill-rating">
+                        <div class="skill-level" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">MS Office</span>
+                    <div class="skill-rating">
+                        <div class="skill-level" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">Problem-Solving</span>
+                    <div class="skill-rating">
+                        <div class="skill-level" style="width: 85%;"></div>
+                    </div>
+                </div>
+                
+                
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Education Section -->
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="education">
+        <h2 class="w3-text-light-grey">Education</h2>
+        <hr style="width: 200px" class="w3-opacity">
+
+        <div class="w3-row-padding">
+            <table class="w3-table-all" >
+                <thead>
+                    <tr class="w3-card w3-hover-shadow">
+                        <th style="text-align: center;">Institute</th>
+                        <th style="text-align: center;">Degree</th>
+                        <th style="text-align: center;">Year</th>
+                        <th style="text-align: center;">Result</th>
+                    </tr>
+                </thead>
+                <tr class="w3-card w3-hover-shadow" >
+                    <td style="text-align: center;">MAYAMARI T.L.B High School</td>
+                    <td style="text-align: center;">SSC</td>
+                    <td style="text-align: center;">2016</td>
+                    <td style="text-align: center;">5.0</td>
+                </tr>
+                <tr class="w3-card w3-hover-shadow">
+                    <td style="text-align: center;">NAOGAON GOV. COLLEGE</td>
+                    <td style="text-align: center;">HSC</td>
+                    <td style="text-align: center;">2026</td>
+                    <td style="text-align: center;">3.58</td>
+                </tr>
+                <tr class="w3-card w3-hover-shadow">
+                    <td style="text-align: center;">EAST WEST UNIVERSITY</td>
+                    <td style="text-align: center;">B.CSE</td>
+                    <td style="text-align: center;">2022</td>
+                    <td style="text-align: center;">3.04</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    
+    
+
+
+    <!-- Portfolio Section -->
+    <div class="w3-padding-64 w3-content" id="portfolio">
+        <h2 class="w3-text-light-grey">Portfolio</h2>
+        <hr style="width: 50px; margin: 30px auto;" class="w3-opacity">
+        <div class="w3-row-padding">
+            <!-- Project 1 -->
+            <div class="w3-col s12 m4">
+                <div class="w3-card w3-hover-shadow">
+                    <img src="https://raw.githubusercontent.com/SAZZAD-AMT/BD_AGRO_D-JANGO_SYSTEM/main/static-files/Screenshot%202022-02-17%20235050.png" alt="BD-AGRO D-JANGO SYSTEM" style="width:100%">
+                    <div class="w3-container">
+                        <h3>BD-AGRO D-JANGO SYSTEM</h3>
+                        <p>
+                            BD AGRO D-JANGO SYSTEM is a Python Django framework website designed for the BD AGRO system. Leveraging Django's high-level capabilities, this platform facilitates the swift creation of secure and easily maintainable websites. It empowers users to efficiently manage agricultural-related data and processes while ensuring robust security and reliability. This project exemplifies the power of Django in delivering agile web solutions for the agricultural sector, making it an invaluable tool for enhancing efficiency and productivity in the field.
+                        </p>
+                        <p>GITHUB: <a href="https://github.com/SAZZAD-AMT/BD_AGRO_D-JANGO_SYSTEM" target="_blank">https://github.com/SAZZAD-AMT/BD_AGRO_D-JANGO_SYSTEM</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="w3-col s12 m4">
+                <div class="w3-card w3-hover-shadow">
+                    <img src="https://github.com/SAZZAD-AMT/FACE-RECOGNITION-AND-ATTENDENCE/blob/main/Imagesbasic/facedetection.jpg?raw=true" alt="FACE-RECOGNITION-AND-ATTENDENCE" style="width:100%">
+                    <div class="w3-container">
+                        <h3>FACE-RECOGNITION-AND-ATTENDENCE</h3>
+                        <p>
+                            A Computer Vision project for face detection and attendance. It involves finding faces in photos using classical feature-based techniques.
+                        </p>
+                        <p>GITHUB: <a href="https://github.com/SAZZAD-AMT/FACE-RECOGNITION-AND-ATTENDENCE" target="_blank">https://github.com/SAZZAD-AMT/FACE-RECOGNITION-AND-ATTENDENCE</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="w3-col s12 m4">
+                <div class="w3-card w3-hover-shadow">
+                    <img src="https://2456764.fs1.hubspotusercontent-na1.net/hub/2456764/hubfs/Blog_Images/2107_Blogs/cybersecurity-tips-1200-627.jpg?width=800&name=cybersecurity-tips-1200-627.jpg" alt="Cyber-Security-Securing-a-networked-system-with-Public-Key-Infrastructure-Implementing-CMD" style="width:100%">
+                    <div class="w3-container">
+                        <h3>Cyber-Security-Securing-a-networked-system-with-Public-Key-Infrastructure-Implementing-CMD</h3>
+                        <p>
+                            A Cyber Security project for securing networked systems with Public Key Infrastructure (PKI) and implementing Transport Layer Security (TLS) on HTTP.
+                        </p>
+                        <p>GITHUB: <a href="https://github.com/SAZZAD-AMT/Cyber-Security-Securing-a-networked-system-with-Public-Key-Infrastructure-Implementing-CMD" target="_blank">https://github.com/SAZZAD-AMT/Cyber-Security-Securing-a-networked-system-with-Public-Key-Infrastructure-Implementing-CMD</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Projects -->
+        <div class="w3-row-padding">
+            <div class="w3-col s12">
+                <div class="w3-card w3-hover-shadow">
+                    <div class="w3-container">
+                        <h3><a href=https://github.com/SAZZAD-AMT?tab=repositories>Other Projects</a></h3>
+                        <ul>
+                            <li>YouTube Downloader Using Python.</li>
+                            <li>Article Summarizer using Flask.</li>
+                            <li>NUMBER TRACE USING PYTHON.</li>
+                            <li>A System for Garbage Detection and Classification using Machine Learning.</li>
+                            <li>Oracle Apex - FIFA WORLD CUP 2020.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Contact Section -->
+    <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
+        <h2 class="w3-text-light-grey">CONTACT ME</h2>
+        <hr style="width:200px" class="w3-opacity">
+        <div class="w3-section">
+            <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Dhaka, BD</p>
+            <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: 01714168209</p>
+            <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Email: sazzad01794@gmail.com</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-32 w3-center w3-opacity">
+        <p>&copy; 2023 Sazzad Hossen. All rights reserved.</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
