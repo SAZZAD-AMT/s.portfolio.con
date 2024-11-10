@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body, h1, h2, h3, h4, h5, h6 {
             font-family: "Montserrat", sans-serif;
@@ -166,6 +167,32 @@
             background-color: #3498db; /* Adjust the color as needed */
             border-radius: 4px;
         }
+         /* Download buttons styling */
+         .download-buttons {
+            margin-top: 30px;
+        }
+
+        .download-buttons .btn {
+            font-size: 1rem;
+            padding: 12px 30px;
+            margin: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-buttons .btn-resume {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .download-buttons .btn-coverletter {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .download-buttons .btn:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body class="w3-black">
@@ -185,10 +212,14 @@
     <a href="#education" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
         <i class="fa fa-graduation-cap w3-xxlarge"></i>
         <p>EDUCATION</p>
-      </a>
-    <a href="#portfolio" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    </a>
+    <a href="#employment_history" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
         <i class="fa fa-briefcase w3-xxlarge"></i>
-        <p>PORTFOLIO</p>
+        <p>EMPLOYMENT HISTORY</p>
+    </a>
+    <a href="#projects" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-rocket w3-xxlarge"></i>
+        <p>EXPERIENCE ON PROJECTS</p>
     </a>
     <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
         <i class="fa fa-envelope w3-xxlarge"></i>
@@ -219,6 +250,11 @@
             </div>
             <div class="hire-me">
                 <img src="https://github.com/SAZZAD-AMT/s.portfolio.con/blob/main/img.png?raw=true" alt="Sazzad Hossen" class="header-image">
+            </div>
+            <!-- Download Resume and Cover Letter Buttons -->
+            <div class="download-buttons text-center">
+                <a href="C:\Users\sazza\Desktop\s.portfolio.con\CV_Sazzad.pdf" download class="btn btn-resume">Download Resume</a>
+                <a href="C:\Users\sazza\Desktop\s.portfolio.con\CV_Sazzad.pdf" download class="btn btn-coverletter">Download Cover Letter</a>
             </div>
         </div>
     </header>
@@ -376,77 +412,133 @@
             </table>
         </div>
     </div>
-
-    
-    
-
-
-    <!-- Portfolio Section -->
-    <div class="w3-padding-64 w3-content" id="portfolio">
-        <h2 class="w3-text-light-grey">PORTFOLIO</h2>
+ 
+    <!-- Employment History Section -->
+    <div class="w3-padding-64 w3-content" id="employment_history">
+        <h2 class="w3-text-light-grey">Employment History</h2>
         <hr style="width: 50px; margin: 30px auto;" class="w3-opacity">
+        
         <div class="w3-row-padding">
-            <!-- Project 1 -->
-            <div class="w3-col s12 m4">
+            <!-- Job 1 -->
+            <div class="w3-col s12 m6">
                 <div class="w3-card w3-hover-shadow">
-                    <img src="https://raw.githubusercontent.com/SAZZAD-AMT/BD_AGRO_D-JANGO_SYSTEM/main/static-files/Screenshot%202022-02-17%20235050.png" alt="BD-AGRO D-JANGO SYSTEM" style="width:100%">
                     <div class="w3-container">
-                        <h3>BD-AGRO D-JANGO SYSTEM</h3>
-                        <p>
-                            BD AGRO D-JANGO SYSTEM is a Python Django framework website designed for the BD AGRO system. Leveraging Django's high-level capabilities, this platform facilitates the swift creation of secure and easily maintainable websites. It empowers users to efficiently manage agricultural-related data and processes while ensuring robust security and reliability. This project exemplifies the power of Django in delivering agile web solutions for the agricultural sector, making it an invaluable tool for enhancing efficiency and productivity in the field.
-                        </p>
-                        <p>GITHUB: <a href="https://github.com/SAZZAD-AMT/BD_AGRO_D-JANGO_SYSTEM" target="_blank">https://github.com/SAZZAD-AMT/BD_AGRO_D-JANGO_SYSTEM</a></p>
+                        <h3>Walton Hi-Tech Industries PLC.</h3>
+                        <p><strong>Position:</strong> Deputy Assistant Director (Data Engineer)</p>
+                        <p><strong>Duration:</strong> 15 Oct 2024 - Present</p>
+                        <p><strong>Expertise:</strong> ETL process, Data Quality Assurance, Informatica IICS, Snowflake, Pentaho, SQL Validation, ETL process for Data Warehousing.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Job 2 -->
+            <div class="w3-col s12 m6">
+                <div class="w3-card w3-hover-shadow">
+                    <div class="w3-container">
+                        <h3>NaimIT</h3>
+                        <p><strong>Position:</strong> Data QA Engineer</p>
+                        <p><strong>Duration:</strong> 4 May 2023 - 1 Jul 2024</p>
+                        <p><strong>Expertise:</strong> ETL process, Data Quality Assurance, Informatica IICS, SQL Queries, Pentaho, SQL Validation, data extraction from Kaggle and RoboFlow, processing and cleaning with Power Query, data visualization, ETL for Data Warehousing.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 2 -->
-            <div class="w3-col s12 m4">
-                <div class="w3-card w3-hover-shadow">
-                    <img src="https://github.com/SAZZAD-AMT/FACE-RECOGNITION-AND-ATTENDENCE/blob/main/Imagesbasic/facedetection.jpg?raw=true" alt="FACE-RECOGNITION-AND-ATTENDENCE" style="width:100%">
-                    <div class="w3-container">
-                        <h3>FACE-RECOGNITION-AND-ATTENDENCE</h3>
-                        <p>
-                            A Computer Vision project for face detection and attendance. It involves finding faces in photos using classical feature-based techniques.
-                        </p>
-                        <p>GITHUB: <a href="https://github.com/SAZZAD-AMT/FACE-RECOGNITION-AND-ATTENDENCE" target="_blank">https://github.com/SAZZAD-AMT/FACE-RECOGNITION-AND-ATTENDENCE</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="w3-col s12 m4">
-                <div class="w3-card w3-hover-shadow">
-                    <img src="https://2456764.fs1.hubspotusercontent-na1.net/hub/2456764/hubfs/Blog_Images/2107_Blogs/cybersecurity-tips-1200-627.jpg?width=800&name=cybersecurity-tips-1200-627.jpg" alt="Cyber-Security-Securing-a-networked-system-with-Public-Key-Infrastructure-Implementing-CMD" style="width:100%">
-                    <div class="w3-container">
-                        <h3>Cyber-Security-Securing-a-networked-system-with-Public-Key-Infrastructure-Implementing-CMD</h3>
-                        <p>
-                            A Cyber Security project for securing networked systems with Public Key Infrastructure (PKI) and implementing Transport Layer Security (TLS) on HTTP.
-                        </p>
-                        <p>GITHUB: <a href="https://github.com/SAZZAD-AMT/Cyber-Security-Securing-a-networked-system-with-Public-Key-Infrastructure-Implementing-CMD" target="_blank">https://github.com/SAZZAD-AMT/Cyber-Security-Securing-a-networked-system-with-Public-Key-Infrastructure-Implementing-CMD</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Other Projects -->
-        <div class="w3-row-padding">
-            <div class="w3-col s12">
+            <!-- Job 3 -->
+            <div class="w3-col s12 m6">
                 <div class="w3-card w3-hover-shadow">
                     <div class="w3-container">
-                        <h3><a href=https://github.com/SAZZAD-AMT?tab=repositories>Other Projects</a></h3>
-                        <ul>
-                            <li>YouTube Downloader Using Python.</li>
-                            <li>Article Summarizer using Flask.</li>
-                            <li>NUMBER TRACE USING PYTHON.</li>
-                            <li>A System for Garbage Detection and Classification using Machine Learning.</li>
-                            <li>Oracle Apex - FIFA WORLD CUP 2020.</li>
-                        </ul>
+                        <h3>BusyQA</h3>
+                        <p><strong>Note:</strong> PartnerShip with NaimIT</p>
+                        <p><strong>Position:</strong> Data QA Engineer</p>
+                        <p><strong>Duration:</strong> 4 May 2023 - 1 Jul 2024</p>
+                        <p><strong>Expertise:</strong> ETL process, Data Quality Assurance, Informatica IICS, SQL Queries, Pentaho, SQL Validation, data extraction from Kaggle and RoboFlow, processing and cleaning with Power Query, data visualization, ETL for Data Warehousing.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Projects Experience Section -->
+    <div class="w3-padding-64 w3-content" id="projects">
+        <h2 class="w3-text-light-grey"><i class="fa fa-folder-open w3-xxlarge"></i>EXPERIENCE ON PROJECTS</h2>
+        <hr style="width: 50px; margin: 30px auto;" class="w3-opacity">
+
+        <div class="w3-row-padding">
+            <!-- Informatica Project -->
+            <div class="w3-col s12 m6">
+                <div class="w3-card w3-hover-shadow w3-padding">
+                    <h3>Informatica-Data-Integration-and-Transformation-Project</h3>
+                    <p><strong>Year:</strong> 2024</p>
+                    <p><strong>Field:</strong> Data Analysis</p>
+                    <p>
+                        This project demonstrates how to structure and manipulate relational databases effectively, showcasing key SQL operations and transformations in Informatica. It includes detailed SQL commands and images for a comprehensive guide on database management tasks.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Face Recognition Project -->
+            <div class="w3-col s12 m6">
+                <div class="w3-card w3-hover-shadow w3-padding">
+                    <h3>FACE-RECOGNITION-AND-ATTENDENCE</h3>
+                    <p><strong>Year:</strong> 2021</p>
+                    <p><strong>Field:</strong> Computer Vision</p>
+                    <p>
+                        A face detection and attendance system utilizing classical feature-based techniques like cascade classifiers for face detection. This project focuses on solving the computer vision problem of locating faces in photos.
+                    </p>
+                    <p>GITHUB: <a href="https://github.com/SAZZAD-AMT/FACE-RECOGNITION-AND-ATTENDENCE" target="_blank">https://github.com/SAZZAD-AMT/FACE-RECOGNITION-AND-ATTENDENCE</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-row-padding w3-margin-top">
+            <!-- Additional Projects List -->
+            <div class="w3-col s12">
+                <div class="w3-card w3-hover-shadow w3-padding">
+                    <h3>Additional Projects</h3>
+                    <ul>
+                        <li>A System for Garbage Detection and Classification using Machine Learning</li>
+                        <li>Oracle Apex - FIFA WORLD CUP 2020</li>
+                        <li>BD_AGRO D-JANGO SYSTEM</li>
+                        <li>CGPA Calculator Using R Language</li>
+                        <li>ReactJs Shopping Website</li>
+                        <li>Flask Online Secure Chatting System</li>
+                        <li>YouTube Downloader Using Python</li>
+                        <li>Article Summarizer using Flask</li>
+                        <li>Number Trace Using Python</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-row-padding w3-margin-top">
+            <!-- Power BI and Tableau Projects -->
+            <div class="w3-col s12 m6">
+                <div class="w3-card w3-hover-shadow w3-padding">
+                    <h3>POWER-Bi & TABLEAU ANALYSIS</h3>
+                    <p><strong>Year:</strong> 2022</p>
+                    <p><strong>Field:</strong> Data Analysis</p>
+                    <p>Power-Bi Project: <a href="https://github.com/SAZZAD-AMT/Power-Bi-Project-Apocolypsy-Food-Page" target="_blank">Apocolypsy Food Page</a></p>
+                    <p>Tableau Project: <a href="https://github.com/SAZZAD-AMT/Tableau-Project-Netflix-and-Video-Games-Analysis" target="_blank">Netflix and Video Games Analysis</a></p>
+                </div>
+            </div>
+
+            <!-- Cyber Security Projects -->
+            <div class="w3-col s12 m6">
+                <div class="w3-card w3-hover-shadow w3-padding">
+                    <h3>ETHICS & CYBER SECURITY PROJECTS</h3>
+                    <ul>
+                        <li><strong>PhishingLinkGenaretor</strong> (LinuxOS)</li>
+                        <li><strong>HACK-WHATSAPP-SJACKING</strong> (LinuxOS)</li>
+                        <li><strong>Python_WIFI_PASSWORD_HACK</strong></li>
+                        <li>Cyber-Security: <a href="https://github.com/SAZZAD-AMT/Cyber-Security-Securing-a-networked-system-with-Public-Key-Infrastructure-Implementing-CMD" target="_blank">Securing a networked system with Public Key Infrastructure</a></li>
+                        <li><strong>TCP-IP client-server application in Python</strong></li>
+                        <li>Designed a full-fledged network for an organization with multiple subnets</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
     <!-- Contact Section -->
@@ -455,17 +547,17 @@
         <hr style="width:200px" class="w3-opacity">
         <div class="w3-section">
             <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Dhaka, BD</p>
-            <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: 01714168209</p>
-            <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Email: sazzad01794@gmail.com</p>
+            <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> 01714168209</p>
+            <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"></i>sazzad01794@gmail.com</p>
         </div>
     </div>
 
     <!-- Footer -->
     <footer class="w3-container w3-padding-32 w3-center w3-opacity">
-        <p>&copy; 2023 Sazzad Hossen. All rights reserved.</p>
+        <p>&copy; 2024 Sazzad Hossen. All rights reserved.</p>
     </footer>
 
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
