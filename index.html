@@ -1,563 +1,1274 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sazzad Hossen - Portfolio</title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body, h1, h2, h3, h4, h5, h6 {
-            font-family: "Montserrat", sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sazzad Hossen — Data Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #060810;
+    --surface: #0d1120;
+    --surface2: #141828;
+    --accent: #00e5ff;
+    --accent2: #7c3aed;
+    --accent3: #f59e0b;
+    --text: #e8eaf6;
+    --muted: #6b7280;
+    --border: rgba(0,229,255,0.12);
+    --glow: rgba(0,229,255,0.15);
+  }
 
-        .w3-row-padding img {
-            margin-bottom: 12px;
-        }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* Set the width of the sidebar to 250px */
-        .w3-sidebar {
-            width: 250px;
-            background: #222;
-        }
+  html { scroll-behavior: smooth; }
 
-        /* Add a left margin to the "page content" that matches the width of the sidebar (250px) */
-        #main {
-            margin-left: 250px;
-        }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
 
-        /* Remove margins from "page content" on small screens */
-        @media only screen and (max-width: 600px) {
-            #main {
-                margin-left: 0;
-            }
+  /* Custom cursor */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s, opacity 0.2s;
+    mix-blend-mode: screen;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.25s cubic-bezier(.25,.46,.45,.94);
+    opacity: 0.5;
+  }
 
-            .w3-sidebar {
-                width: 0;
-            }
-        }
-        /* header */
-        .header-container {
-            background-color: #000;
-            padding: 60px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-    
-        .header-content {
-            color: #fff;
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-    
-        .header-text {
-            width: 50%;
-            padding-right: 20px;
-        }
-    
-        .header-title {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-    
-        .header-subtitle {
-            font-size: 1.2rem;
-            color: #999;
-        }
-    
-        .header-image {
-            width: 300px;
-            height: 400px;
-            border: 2px solid #fff;
-            border-radius: 5px;
-            margin-top: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
-        }
-    
-        .hire-me {
-            width: 50%;
-            padding-left: 20px;
-        }
-    
-        .hire-me-button {
-            background-color: #3498db;
-            color: #fff;
-            font-size: 1.2rem;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            display: block;
-        }
-    
-        .hire-me-button:hover {
-            background-color: #1e77d0;
-        }
-    
-        .header-container:hover .header-image {
-            transform: scale(1.05);
-        }
+  /* Background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-        /* Style the education section */
-        #education {
-            background-color: #000;
-            color: #fff;
-            padding: 64px 0;
-        }
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(6,8,16,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
 
-        .w3-table-all {
-            width: 100%;
-            border-collapse: collapse;
-        }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
 
-        .w3-table-all th, .w3-table-all td {
-            padding: 12px;
-            text-align: center;
-            border: 1px solid #fff;
-        }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
 
-        .w3-table-all th {
-            background-color: #333;
-        }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
 
-        .w3-table-all tr:nth-child(even) {
-            background-color: #222;
-        }
+  .nav-links a:hover { color: var(--accent); }
 
-        .w3-table-all tr:nth-child(odd) {
-            background-color: #111;
-        }
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
 
-        /* Style the headings */
-        .w3-text-light-grey {
-            color: #999;
-        }
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
+    top: 50%; right: -100px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
 
-        .w3-opacity {
-            opacity: 0.6;
-        }
-        /* Style for skill ratings */
-        .skill {
-            margin-bottom: 16px;
-        }
+  .hero-glow2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
+    bottom: -100px; left: 200px;
+    pointer-events: none;
+  }
 
-        .skill-name {
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
+  .hero-content {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
 
-        .skill-rating {
-            background-color: #ddd;
-            height: 20px;
-            border-radius: 4px;
-            position: relative;
-        }
+  .hero-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 
-        .skill-level {
-            height: 100%;
-            background-color: #3498db; /* Adjust the color as needed */
-            border-radius: 4px;
-        }
-         /* Download buttons styling */
-         .download-buttons {
-            margin-top: 30px;
-        }
+  .hero-tag::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--accent);
+  }
 
-        .download-buttons .btn {
-            font-size: 1rem;
-            padding: 12px 30px;
-            margin: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: 1.0;
+    margin-bottom: 16px;
+    letter-spacing: -2px;
+  }
 
-        .download-buttons .btn-resume {
-            background-color: #28a745;
-            color: #fff;
-        }
+  .hero-name span {
+    color: var(--accent);
+    font-style: italic;
+  }
 
-        .download-buttons .btn-coverletter {
-            background-color: #007bff;
-            color: #fff;
-        }
+  .hero-title {
+    font-size: 1rem;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 28px;
+    letter-spacing: 0.05em;
+  }
 
-        .download-buttons .btn:hover {
-            opacity: 0.8;
-        }
-    </style>
+  .hero-quote {
+    font-size: 1rem;
+    color: var(--text);
+    opacity: 0.7;
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 40px;
+    font-style: italic;
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,229,255,0.3);
+  }
+
+  .btn-outline {
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* Hero photo */
+  .hero-photo-wrap {
+    position: relative;
+  }
+
+  .hero-photo {
+    width: 260px; height: 320px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 4px;
+    filter: grayscale(20%) contrast(1.05);
+    position: relative;
+    z-index: 1;
+    display: block;
+  }
+
+  .hero-photo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -8px -8px auto auto;
+    width: 100%; height: 100%;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    opacity: 0.4;
+    z-index: 0;
+  }
+
+  .hero-photo-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,229,255,0.15) 0%, transparent 50%);
+    border-radius: 4px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Stats strip */
+  .stats-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 32px 60px;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 100px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 30px; height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -1px;
+    margin-bottom: 60px;
+    line-height: 1.1;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--surface); margin: 0; max-width: 100%; padding: 100px 60px; }
+  .skills-inner { max-width: 1200px; margin: 0 auto; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .skill-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .skill-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+
+  .skill-card-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    background: rgba(0,229,255,0.06);
+    border: 1px solid rgba(0,229,255,0.15);
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    padding: 5px 12px;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  .tag:hover { background: rgba(0,229,255,0.14); }
+
+  .tag.hot {
+    background: rgba(124,58,237,0.1);
+    border-color: rgba(124,58,237,0.3);
+  }
+
+  /* EXPERIENCE */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 52px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -38px; top: 8px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px rgba(0,229,255,0.5);
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .timeline-company {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--text);
+  }
+
+  .timeline-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    background: rgba(0,229,255,0.06);
+    border: 1px solid rgba(0,229,255,0.15);
+    padding: 4px 12px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .timeline-role {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .timeline-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .timeline-bullets li {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .timeline-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  .timeline-tech {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tech-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--accent3);
+    background: rgba(245,158,11,0.07);
+    border: 1px solid rgba(245,158,11,0.2);
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 32px;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-card:hover { border-color: rgba(0,229,255,0.3); transform: translateY(-4px); }
+
+  .project-year {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent3);
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+  }
+
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .project-desc {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  /* EDUCATION */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .edu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .edu-card:hover { border-color: var(--accent); }
+
+  .edu-degree {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+  }
+
+  .edu-inst {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.06em;
+  }
+
+  .edu-year {
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin-bottom: 6px;
+  }
+
+  .edu-gpa {
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    color: var(--accent3);
+    font-weight: 700;
+  }
+
+  .edu-badge {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: rgba(0,229,255,0.08);
+    border: 1px solid rgba(0,229,255,0.2);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--accent);
+    padding: 3px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* RESEARCH */
+  .research-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .research-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent2);
+    border-radius: 0 4px 4px 0;
+    padding: 20px 24px;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    transition: background 0.2s;
+  }
+
+  .research-item:hover { background: var(--surface2); }
+
+  .research-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent2);
+    margin-bottom: 4px;
+    letter-spacing: 0.1em;
+  }
+
+  /* CERTS */
+  .certs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .cert-pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-family: 'Space Mono', monospace;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+
+  .cert-pill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0,229,255,0.05);
+  }
+
+  /* CONTACT */
+  #contact { background: var(--surface); margin: 0; max-width: 100%; padding: 100px 60px; }
+  .contact-inner { max-width: 1200px; margin: 0 auto; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .contact-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+
+  .contact-subtext {
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--accent); }
+
+  .contact-icon {
+    width: 40px; height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    background: var(--bg);
+    transition: border-color 0.2s;
+  }
+
+  .contact-link:hover .contact-icon { border-color: var(--accent); }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 32px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    letter-spacing: 0.1em;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up { animation: fadeUp 0.7s ease forwards; }
+  .delay-1 { animation-delay: 0.1s; opacity: 0; }
+  .delay-2 { animation-delay: 0.25s; opacity: 0; }
+  .delay-3 { animation-delay: 0.4s; opacity: 0; }
+  .delay-4 { animation-delay: 0.55s; opacity: 0; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    #hero { padding: 100px 24px 60px; }
+    .hero-content { grid-template-columns: 1fr; }
+    .hero-photo-wrap { display: none; }
+    section { padding: 60px 24px; }
+    #skills, #contact { padding: 60px 24px; }
+    .stats-strip { padding: 28px 24px; gap: 40px; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
-<body class="w3-black">
+<body>
 
-<!-- Sidebar -->
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-    <!-- Avatar image in top left corner -->
-    
-    <a href="#aboutme" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i class="fa fa-user w3-xxlarge"></i>
-        <p>ABOUT ME</p>
-    </a>
-    <a href="#skill" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i class="fa fa-code w3-xxlarge"></i>
-        <p>SKILLS</p>
-    </a>
-    <a href="#education" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i class="fa fa-graduation-cap w3-xxlarge"></i>
-        <p>EDUCATION</p>
-    </a>
-    <a href="#employment_history" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i class="fa fa-briefcase w3-xxlarge"></i>
-        <p>EMPLOYMENT HISTORY</p>
-    </a>
-    <a href="#projects" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i class="fa fa-rocket w3-xxlarge"></i>
-        <p>EXPERIENCE ON PROJECTS</p>
-    </a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i class="fa fa-envelope w3-xxlarge"></i>
-        <p>CONTACT</p>
-    </a>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">SH.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
-
-<!-- Page Content -->
-<div class="w3-padding-large" id="main">
-    <!-- Header/Home -->
-    <header class="header-container" id="aboutme">
-        <div class="header-content">
-            <div class="header-text">
-                <h1 class="header-title">I'm Sazzad Hossen</h1>
-                <p class="header-subtitle">Computer Science & Engineering</p>
-                <p>
-                    May ask me any question, I may not be able to answer it but I will definitely find 
-                    the answer - This is my SPEED.
-                <p>Graduate of Computer Science and Engineering with experience working across 
-                the Computer Vision, Machine Learning and Big Data. Eager to contribute to an 
-                accomplished team, fostering personal growth through interaction with seasoned 
-                professionals, and capitalizing on my track record of successfully spearheading 
-                diverse projects in the field.</p>
-          
-               </p>
-                <a href="mailto:sazzad01794@gmail.com" class="hire-me-button">Hire me</a>
-            </div>
-            <div class="hire-me">
-                <img src="https://github.com/SAZZAD-AMT/s.portfolio.con/blob/main/img.png?raw=true" alt="Sazzad Hossen" class="header-image">
-            </div>
-            <!-- Download Resume and Cover Letter Buttons -->
-            <div class="download-buttons text-center">
-                <a href="https://github.com/SAZZAD-AMT/s.portfolio.con/blob/main/CV_Sazzad.pdf" download class="btn btn-resume">Download Resume</a>
-                <a href="https://github.com/SAZZAD-AMT/s.portfolio.con/blob/main/Cover%20Later_SAZZAD.pdf" download class="btn btn-coverletter">Download Cover Letter</a>
-            </div>
-        </div>
-    </header>
-    
-
-
-    <!-- Skills Section -->
-    
-    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="skill">
-        <h2 class="w3-text-light-grey">SKILLS</h2>
-        <hr style="width:200px" class="w3-opacity">
-        <div class="w3-row-padding">
-            <div class="w3-half">
-                <h3>Programming Languages</h3>
-                
-                <div class="skill">
-                    <span class="skill-name">Python</span>
-                    <div class="skill-rating">
-                        <div class="skill-level" style="width: 95%;"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <span class="skill-name">JAVA</span>
-                    <div class="skill-rating">
-                        <div class="skill-level" style="width: 60%;"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <span class="skill-name">C++</span>
-                    <div class="skill-rating">
-                        <div class="skill-level" style="width: 90%;"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <span class="skill-name">R</span>
-                    <div class="skill-rating">
-                        <div class="skill-level" style="width: 70%;"></div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="w3-half">
-                <h3>Web Development</h3>
-                
-                <div class="skill">
-                    <span class="skill-name">HTML, CSS, JavaScript</span>
-                    <div class="skill-rating">
-                        <div class="skill-level" style="width: 90%;"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <span class="skill-name">BOOTSTRAP</span>
-                    <div class="skill-rating">
-                        <div class="skill-level" style="width: 70%;"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <span class="skill-name">D-JANGO</span>
-                    <div class="skill-rating">
-                        <div class="skill-level" style="width: 80%;"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <span class="skill-name">FLASK</span>
-                    <div class="skill-rating">
-                        <div class="skill-level" style="width: 75%;"></div>
-                    </div>
-                </div>
-              
-            </div>
-            <div class="w3-half">
-                <h3>Data Analysis</h3>
-                
-                <div class="skill">
-                    <span class="skill-name">Data Visualization</span>
-                    <div class="skill-rating">
-                        <div class="skill-level" style="width: 80%;"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <span class="skill-name">Machine Learning</span>
-                    <div class="skill-rating">
-                        <div class="skill-level" style="width: 85%;"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <span class="skill-name">Data Cleaning</span>
-                    <div class="skill-rating">
-                        <div class="skill-level" style="width: 80%;"></div>
-                    </div>
-                </div>
-               
-            </div>
-            <div class="w3-half">
-                <h3>Other Skills</h3>
-                
-                <div class="skill">
-                    <span class="skill-name">Communication/Team Work</span>
-                    <div class="skill-rating">
-                        <div class="skill-level" style="width: 90%;"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <span class="skill-name">MS Office</span>
-                    <div class="skill-rating">
-                        <div class="skill-level" style="width: 90%;"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <span class="skill-name">Problem-Solving</span>
-                    <div class="skill-rating">
-                        <div class="skill-level" style="width: 85%;"></div>
-                    </div>
-                </div>
-                
-                
-            </div>
-
-        </div>
+<!-- HERO -->
+<section id="hero" style="max-width:100%; padding-top:120px;">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-tag fade-up">Data Engineer · Big Data · ML</div>
+      <h1 class="hero-name fade-up delay-1">Sazzad<br><span>Hossen</span></h1>
+      <p class="hero-title fade-up delay-2">Senior Deputy Assistant Director @ Walton Hi-Tech Industries PLC.</p>
+      <blockquote class="hero-quote fade-up delay-3">
+        "May you ask me any question, I might not know the answer immediately but I will definitely find the answer — This is my SPEED."
+      </blockquote>
+      <div class="hero-cta fade-up delay-4">
+        <a href="mailto:sazzad01794@gmail.com" class="btn-primary">Hire Me</a>
+        <a href="#experience" class="btn-outline">View Work</a>
+      </div>
     </div>
-
-    <!-- Education Section -->
-    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="education">
-        <h2 class="w3-text-light-grey">Education</h2>
-        <hr style="width: 200px" class="w3-opacity">
-
-        <div class="w3-row-padding">
-            <table class="w3-table-all" >
-                <thead>
-                    <tr class="w3-card w3-hover-shadow">
-                        <th style="text-align: center;">Institute</th>
-                        <th style="text-align: center;">Degree</th>
-                        <th style="text-align: center;">Year</th>
-                        <th style="text-align: center;">Result</th>
-                    </tr>
-                </thead>
-                <tr class="w3-card w3-hover-shadow" >
-                    <td style="text-align: center;">MAYAMARI T.L.B High School</td>
-                    <td style="text-align: center;">SSC</td>
-                    <td style="text-align: center;">2016</td>
-                    <td style="text-align: center;">5.0</td>
-                </tr>
-                <tr class="w3-card w3-hover-shadow">
-                    <td style="text-align: center;">NAOGAON GOV. COLLEGE</td>
-                    <td style="text-align: center;">HSC</td>
-                    <td style="text-align: center;">2026</td>
-                    <td style="text-align: center;">3.58</td>
-                </tr>
-                <tr class="w3-card w3-hover-shadow">
-                    <td style="text-align: center;">EAST WEST UNIVERSITY</td>
-                    <td style="text-align: center;">B.CSE</td>
-                    <td style="text-align: center;">2022</td>
-                    <td style="text-align: center;">3.04</td>
-                </tr>
-            </table>
-        </div>
+    <div class="hero-photo-wrap fade-up delay-2">
+      <img src="https://github.com/SAZZAD-AMT/s.portfolio.con/blob/main/sazzad_formal_2026.jpg?raw=true" alt="Sazzad Hossen" class="hero-photo" onerror="this.style.display='none'">
     </div>
- 
-    <!-- Employment History Section -->
-    <div class="w3-padding-64 w3-content" id="employment_history">
-        <h2 class="w3-text-light-grey">Employment History</h2>
-        <hr style="width: 50px; margin: 30px auto;" class="w3-opacity">
-        
-        <div class="w3-row-padding">
-            <!-- Job 1 -->
-            <div class="w3-col s12 m6">
-                <div class="w3-card w3-hover-shadow">
-                    <div class="w3-container">
-                        <h3>Walton Hi-Tech Industries PLC.</h3>
-                        <p><strong>Position:</strong> Deputy Assistant Director (Data Engineer)</p>
-                        <p><strong>Duration:</strong> 15 Oct 2024 - Present</p>
-                        <p><strong>Expertise:</strong> ETL process, Data Quality Assurance, Informatica IICS, Snowflake, Pentaho, SQL Validation, ETL process for Data Warehousing.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Job 2 -->
-            <div class="w3-col s12 m6">
-                <div class="w3-card w3-hover-shadow">
-                    <div class="w3-container">
-                        <h3>NaimIT</h3>
-                        <p><strong>Position:</strong> Data QA Engineer</p>
-                        <p><strong>Duration:</strong> 4 May 2023 - 1 Jul 2024</p>
-                        <p><strong>Expertise:</strong> ETL process, Data Quality Assurance, Informatica IICS, SQL Queries, Pentaho, SQL Validation, data extraction from Kaggle and RoboFlow, processing and cleaning with Power Query, data visualization, ETL for Data Warehousing.</p>
-                    </div>
-                </div>
-            </div>
+  </div>
+</section>
 
-            <!-- Job 3 -->
-            <div class="w3-col s12 m6">
-                <div class="w3-card w3-hover-shadow">
-                    <div class="w3-container">
-                        <h3>BusyQA</h3>
-                        <p><strong>Note:</strong> PartnerShip with NaimIT</p>
-                        <p><strong>Position:</strong> Data QA Engineer</p>
-                        <p><strong>Duration:</strong> 4 May 2023 - 1 Jul 2024</p>
-                        <p><strong>Expertise:</strong> ETL process, Data Quality Assurance, Informatica IICS, SQL Queries, Pentaho, SQL Validation, data extraction from Kaggle and RoboFlow, processing and cleaning with Power Query, data visualization, ETL for Data Warehousing.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Projects Experience Section -->
-    <div class="w3-padding-64 w3-content" id="projects">
-        <h2 class="w3-text-light-grey"><i class="fa fa-folder-open w3-xxlarge"></i>EXPERIENCE ON PROJECTS</h2>
-        <hr style="width: 50px; margin: 30px auto;" class="w3-opacity">
-
-        <div class="w3-row-padding">
-            <!-- Informatica Project -->
-            <div class="w3-col s12 m6">
-                <div class="w3-card w3-hover-shadow w3-padding">
-                    <h3>Informatica-Data-Integration-and-Transformation-Project</h3>
-                    <p><strong>Year:</strong> 2024</p>
-                    <p><strong>Field:</strong> Data Analysis</p>
-                    <p>
-                        This project demonstrates how to structure and manipulate relational databases effectively, showcasing key SQL operations and transformations in Informatica. It includes detailed SQL commands and images for a comprehensive guide on database management tasks.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Face Recognition Project -->
-            <div class="w3-col s12 m6">
-                <div class="w3-card w3-hover-shadow w3-padding">
-                    <h3>FACE-RECOGNITION-AND-ATTENDENCE</h3>
-                    <p><strong>Year:</strong> 2021</p>
-                    <p><strong>Field:</strong> Computer Vision</p>
-                    <p>
-                        A face detection and attendance system utilizing classical feature-based techniques like cascade classifiers for face detection. This project focuses on solving the computer vision problem of locating faces in photos.
-                    </p>
-                    <p>GITHUB: <a href="https://github.com/SAZZAD-AMT/FACE-RECOGNITION-AND-ATTENDENCE" target="_blank">https://github.com/SAZZAD-AMT/FACE-RECOGNITION-AND-ATTENDENCE</a></p>
-                </div>
-            </div>
-        </div>
-
-        <div class="w3-row-padding w3-margin-top">
-            <!-- Additional Projects List -->
-            <div class="w3-col s12">
-                <div class="w3-card w3-hover-shadow w3-padding">
-                    <h3>Additional Projects</h3>
-                    <ul>
-                        <li>A System for Garbage Detection and Classification using Machine Learning</li>
-                        <li>Oracle Apex - FIFA WORLD CUP 2020</li>
-                        <li>BD_AGRO D-JANGO SYSTEM</li>
-                        <li>CGPA Calculator Using R Language</li>
-                        <li>ReactJs Shopping Website</li>
-                        <li>Flask Online Secure Chatting System</li>
-                        <li>YouTube Downloader Using Python</li>
-                        <li>Article Summarizer using Flask</li>
-                        <li>Number Trace Using Python</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="w3-row-padding w3-margin-top">
-            <!-- Power BI and Tableau Projects -->
-            <div class="w3-col s12 m6">
-                <div class="w3-card w3-hover-shadow w3-padding">
-                    <h3>POWER-Bi & TABLEAU ANALYSIS</h3>
-                    <p><strong>Year:</strong> 2022</p>
-                    <p><strong>Field:</strong> Data Analysis</p>
-                    <p>Power-Bi Project: <a href="https://github.com/SAZZAD-AMT/Power-Bi-Project-Apocolypsy-Food-Page" target="_blank">Apocolypsy Food Page</a></p>
-                    <p>Tableau Project: <a href="https://github.com/SAZZAD-AMT/Tableau-Project-Netflix-and-Video-Games-Analysis" target="_blank">Netflix and Video Games Analysis</a></p>
-                </div>
-            </div>
-
-            <!-- Cyber Security Projects -->
-            <div class="w3-col s12 m6">
-                <div class="w3-card w3-hover-shadow w3-padding">
-                    <h3>ETHICS & CYBER SECURITY PROJECTS</h3>
-                    <ul>
-                        <li><strong>PhishingLinkGenaretor</strong> (LinuxOS)</li>
-                        <li><strong>HACK-WHATSAPP-SJACKING</strong> (LinuxOS)</li>
-                        <li><strong>Python_WIFI_PASSWORD_HACK</strong></li>
-                        <li>Cyber-Security: <a href="https://github.com/SAZZAD-AMT/Cyber-Security-Securing-a-networked-system-with-Public-Key-Infrastructure-Implementing-CMD" target="_blank">Securing a networked system with Public Key Infrastructure</a></li>
-                        <li><strong>TCP-IP client-server application in Python</strong></li>
-                        <li>Designed a full-fledged network for an organization with multiple subnets</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- Contact Section -->
-    <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
-        <h2 class="w3-text-light-grey">CONTACT ME</h2>
-        <hr style="width:200px" class="w3-opacity">
-        <div class="w3-section">
-            <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Dhaka, BD</p>
-            <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> 01714168209</p>
-            <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"></i>sazzad01794@gmail.com</p>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="w3-container w3-padding-32 w3-center w3-opacity">
-        <p>&copy; 2024 Sazzad Hossen. All rights reserved.</p>
-    </footer>
-
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat">
+    <span class="stat-num">2+</span>
+    <span class="stat-label">Years Experience</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">15+</span>
+    <span class="stat-label">Projects Delivered</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">7</span>
+    <span class="stat-label">Research Papers</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">3</span>
+    <span class="stat-label">Cloud Platforms</span>
+  </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">01 — About</div>
+  <h2 class="section-title">Dynamic Data Engineer<br>& Problem Solver</h2>
+  <p style="color: var(--muted); max-width: 700px; line-height: 1.8; font-size: 0.97rem; margin-bottom: 24px;">
+    Dynamic Data Engineer with expertise in Data Science & Analytics, Apache Airflow, Spark, ETL pipelines, and Data Warehouses (Iceberg, BigQuery, Redshift). Strong command of advanced SQL — CTEs, window functions, aggregates, subqueries, performance tuning — paired with relational databases and NoSQL systems like MongoDB.
+  </p>
+  <p style="color: var(--muted); max-width: 700px; line-height: 1.8; font-size: 0.97rem;">
+    Experienced in Python, Kubernetes, Docker, Bash scripting, CI/CD Pipelines, REST APIs, Power BI, MinIO-S3, and cloud platforms (AWS, GCP, Azure, Salesforce). Dedicated to data integrity, optimized workflows, and driving business growth through data-driven decision-making.
+  </p>
+</section>
+
+<!-- SKILLS -->
+<div id="skills">
+  <div class="skills-inner">
+    <div class="section-label">02 — Skills</div>
+    <h2 class="section-title">Tech Stack &<br>Expertise</h2>
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="skill-card-title">⚡ Data Engineering</div>
+        <div class="tags">
+          <span class="tag hot">Apache Airflow</span>
+          <span class="tag hot">Apache Spark</span>
+          <span class="tag">ETL / ELT</span>
+          <span class="tag">Kafka</span>
+          <span class="tag">Debezium</span>
+          <span class="tag">Informatica IICS</span>
+          <span class="tag">Pentaho</span>
+          <span class="tag">Iceberg</span>
+          <span class="tag">MinIO / S3</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">☁️ Cloud & DevOps</div>
+        <div class="tags">
+          <span class="tag hot">AWS</span>
+          <span class="tag hot">GCP</span>
+          <span class="tag">Azure</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Docker</span>
+          <span class="tag">CI/CD Pipelines</span>
+          <span class="tag">Bash Scripting</span>
+          <span class="tag">MLOps</span>
+          <span class="tag">DevOps</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">🗄️ Databases & Warehouses</div>
+        <div class="tags">
+          <span class="tag hot">Snowflake</span>
+          <span class="tag hot">BigQuery</span>
+          <span class="tag">Redshift</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">MSSQL</span>
+          <span class="tag">Oracle</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Trino</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">🐍 Programming</div>
+        <div class="tags">
+          <span class="tag hot">Python</span>
+          <span class="tag hot">SQL / NoSQL</span>
+          <span class="tag">C++</span>
+          <span class="tag">Java</span>
+          <span class="tag">R</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">React</span>
+          <span class="tag">Django</span>
+          <span class="tag">Flask</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">📊 Analytics & BI</div>
+        <div class="tags">
+          <span class="tag hot">Power BI</span>
+          <span class="tag">Tableau</span>
+          <span class="tag">Excel</span>
+          <span class="tag">Data Visualization</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Computer Vision</span>
+          <span class="tag">AWS QuickSight</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">🔒 Security & Other</div>
+        <div class="tags">
+          <span class="tag">Ethical Hacking</span>
+          <span class="tag">Cyber Security</span>
+          <span class="tag">REST API</span>
+          <span class="tag">Git / GitHub</span>
+          <span class="tag">Salesforce</span>
+          <span class="tag">Kali Linux</span>
+          <span class="tag">Ubuntu Server</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">03 — Experience</div>
+  <h2 class="section-title">Employment<br>History</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-header">
+        <div class="timeline-company">Walton Hi-Tech Industries PLC.</div>
+        <span class="timeline-date">Oct 2024 — Present</span>
+      </div>
+      <div class="timeline-role">Senior Deputy Assistant Director → Data Engineer</div>
+      <ul class="timeline-bullets">
+        <li>Monitor and troubleshoot daily data ETL processes of the Data Warehouse.</li>
+        <li>Develop and manage ETL/ELT workflows using Apache Airflow and Spark.</li>
+        <li>Analyze and integrate monthly market share data into the Data Warehouse.</li>
+        <li>Ensure data quality through robust monitoring systems and validation.</li>
+        <li>Build analytical tools and Power BI dashboards to support business performance metrics.</li>
+        <li>Develop and utilize REST APIs to share data with web applications securely.</li>
+        <li>Manage pipeline deployment and orchestration on Kubernetes for scalability.</li>
+      </ul>
+      <div class="timeline-tech">
+        <span class="tech-tag">Airflow</span>
+        <span class="tech-tag">Spark</span>
+        <span class="tech-tag">Kubernetes</span>
+        <span class="tech-tag">Iceberg</span>
+        <span class="tech-tag">MinIO/S3</span>
+        <span class="tech-tag">Power BI</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Trino</span>
+        <span class="tech-tag">REST API</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-header">
+        <div class="timeline-company">NaimIT <span style="color:var(--muted); font-size:0.9rem;"> / BusyQA</span></div>
+        <span class="timeline-date">May 2023 — Jul 2024</span>
+      </div>
+      <div class="timeline-role">Data QA Engineer</div>
+      <ul class="timeline-bullets">
+        <li>Designed and developed ETL pipelines using Informatica PowerCenter for high-volume product data.</li>
+        <li>Transformed and loaded data into AWS S3; used EC2 for scalable compute and Glue for metadata.</li>
+        <li>Performed Data Quality Assurance with SQL validation and Pentaho workflows.</li>
+        <li>Extracted and cleaned datasets from Kaggle and RoboFlow using Power Query.</li>
+        <li>Delivered business dashboards and insights; supported Salesforce for sales analytics.</li>
+      </ul>
+      <div class="timeline-tech">
+        <span class="tech-tag">Informatica IICS</span>
+        <span class="tech-tag">AWS Redshift</span>
+        <span class="tech-tag">AWS Glue</span>
+        <span class="tech-tag">QuickSight</span>
+        <span class="tech-tag">Pentaho</span>
+        <span class="tech-tag">Salesforce</span>
+        <span class="tech-tag">SQL</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background: var(--surface); max-width:100%; padding: 100px 60px; margin:0;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div class="section-label">04 — Projects</div>
+    <h2 class="section-title">Featured<br>Work</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-year">2024 — WALTON</div>
+        <div class="project-title">Data Warehouse, ETL Process & Visualization</div>
+        <div class="project-desc">Collected and integrated data from multiple sources into a centralized warehouse using Airflow for orchestration. Processed data on MinIO/S3 via Iceberg tables. Developed Power BI dashboards for actionable insights.</div>
+        <div class="tags">
+          <span class="tag">Airflow</span><span class="tag">Iceberg</span><span class="tag">Power BI</span><span class="tag">Kubernetes</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-year">2024 — WALTON</div>
+        <div class="project-title">Distributor Stock Rebate & Market Share Management</div>
+        <div class="project-desc">Calculated distributor stock rebates with ≥99% accuracy. Uploaded and validated monthly market share data at 100% accuracy. Built Power BI dashboard for real-time insights using OneEye data.</div>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Oracle</span><span class="tag">MySQL</span><span class="tag">Iceberg</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-year">2025 — WALTON</div>
+        <div class="project-title">Smart Sales Monitoring & Operational Insights</div>
+        <div class="project-desc">Tracked SR invoices and distributor/employee retailer visits. Analyzed distributor-to-retailer workflows to identify bottlenecks. Automated reporting for operational visibility and business performance.</div>
+        <div class="tags">
+          <span class="tag">PostgreSQL</span><span class="tag">REST API</span><span class="tag">Python</span><span class="tag">Postman</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-year">2023–24 — NaimIT</div>
+        <div class="project-title">AWS Data Integration & ETL Pipeline (IICS)</div>
+        <div class="project-desc">Built automated ETL pipelines using Informatica PowerCenter to process high-volume product data, load into AWS S3, and support business analytics dashboards with Glue metadata management.</div>
+        <div class="tags">
+          <span class="tag">Informatica</span><span class="tag">AWS S3</span><span class="tag">AWS Glue</span><span class="tag">EC2</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-year">2021 — Computer Vision</div>
+        <div class="project-title">Face Recognition & Attendance System</div>
+        <div class="project-desc">A face detection and attendance system utilizing classical feature-based techniques like cascade classifiers. Solves the computer vision problem of locating and recognizing faces in photos for automated attendance.</div>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">Computer Vision</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-year">2022 — Data Analysis</div>
+        <div class="project-title">Power BI & Tableau Analytics Suite</div>
+        <div class="project-desc">Power BI project on Apocalypsy Food data. Tableau analysis covering Netflix content and video game trends. Built interactive dashboards and visual narratives for business decision support.</div>
+        <div class="tags">
+          <span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">Data Visualization</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 40px; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 28px;">
+      <div class="skill-card-title" style="margin-bottom: 16px; font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);">Additional Projects</div>
+      <div class="tags">
+        <span class="tag">Garbage Detection ML System</span>
+        <span class="tag">Oracle Apex FIFA World Cup</span>
+        <span class="tag">BD_AGRO Django System</span>
+        <span class="tag">CGPA Calculator in R</span>
+        <span class="tag">ReactJs Shopping Website</span>
+        <span class="tag">Flask Secure Chat System</span>
+        <span class="tag">YouTube Downloader</span>
+        <span class="tag">Article Summarizer (Flask)</span>
+        <span class="tag">TCP/IP Client-Server App</span>
+        <span class="tag">PKI Network Security</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-label">05 — Research</div>
+  <h2 class="section-title">Research<br>Papers</h2>
+  <div class="research-list">
+    <div class="research-item">
+      <div class="research-num">Paper 01</div>
+      A Policy Framework for Cost Effective Production of Electricity using Renewable Energy
+    </div>
+    <div class="research-item">
+      <div class="research-num">Paper 02</div>
+      Medical Insurance Cost Prediction Using Machine Learning
+    </div>
+    <div class="research-item">
+      <div class="research-num">Paper 03</div>
+      A Brain MRI based Hippocampus Segmentation System using Image Processing
+    </div>
+    <div class="research-item">
+      <div class="research-num">Paper 04</div>
+      Web-Based Virtual Laboratories: Augmenting Science Education Beyond the Classroom
+    </div>
+    <div class="research-item">
+      <div class="research-num">Paper 05</div>
+      A System for Garbage Detection and Classification Using Machine Learning
+    </div>
+    <div class="research-item">
+      <div class="research-num">Paper 06</div>
+      Enhancing Banking Security Using Big Data Analytics and Machine Learning for Fraud Detection
+    </div>
+    <div class="research-item">
+      <div class="research-num">Paper 07</div>
+      Fast, Fault-Tolerant, and Affordable: A Modern Data Lakehouse ETL Pipeline for Emerging Economies
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">06 — Education</div>
+  <h2 class="section-title">Academic<br>Background</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <span class="edu-badge">In Progress</span>
+      <div class="edu-degree">M.Sc in CSE</div>
+      <div class="edu-inst">East West University, BD</div>
+      <div class="edu-year">2025 — Present</div>
+      <div class="edu-gpa">CGPA 3.44 / 4.00</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">B.Sc in CSE</div>
+      <div class="edu-inst">East West University, BD</div>
+      <div class="edu-year">Graduated 2023</div>
+      <div class="edu-gpa">CGPA 3.03 / 4.00</div>
+      <p style="font-size:0.75rem; color:var(--muted); margin-top:8px;">Campus Ambassador & Information Secretary at Robo Tech Valley</p>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">HSC</div>
+      <div class="edu-inst">Naogaon Govt. College, BD</div>
+      <div class="edu-year">2018</div>
+      <div class="edu-gpa">GPA 3.58 / 5.00</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">SSC</div>
+      <div class="edu-inst">MAYAMARI T.L.B High School, BD</div>
+      <div class="edu-year">2016</div>
+      <div class="edu-gpa">GPA 5.00 / 5.00</div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section style="padding-top: 0;">
+  <div class="section-label">07 — Certifications</div>
+  <h2 class="section-title">Certificates &<br>Achievements</h2>
+  <div class="certs-grid">
+    <span class="cert-pill">Introduction to Data Science</span>
+    <span class="cert-pill">Data Analytics Essentials</span>
+    <span class="cert-pill">Cyber Threat Management</span>
+    <span class="cert-pill">Ethical Hacker</span>
+    <span class="cert-pill">IoT & Cloud Enabled Renewable Energy</span>
+    <span class="cert-pill">Introduction to Cybersecurity</span>
+    <span class="cert-pill">RoboTech Valley — Information Secretary</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="contact-inner">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">08 — Contact</div>
+        <h2 class="contact-headline">Let's Build<br>Something<br><em style="color:var(--accent); font-family:'DM Serif Display',serif;">Together.</em></h2>
+        <p class="contact-subtext">Open to new opportunities, collaborations, and data engineering challenges. Based in Dhaka, Bangladesh — available for remote and on-site roles.</p>
+        <a href="mailto:sazzad01794@gmail.com" class="btn-primary" style="display:inline-block;">Send a Message</a>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:sazzad01794@gmail.com" class="contact-link">
+          <div class="contact-icon">✉</div>
+          <div>
+            <div style="font-size:0.7rem; color:var(--muted); margin-bottom:2px; font-family:'Space Mono',monospace;">Email</div>
+            sazzad01794@gmail.com
+          </div>
+        </a>
+        <a href="tel:+8801714168209" class="contact-link">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div style="font-size:0.7rem; color:var(--muted); margin-bottom:2px; font-family:'Space Mono',monospace;">Phone</div>
+            +880 1714 168 209
+          </div>
+        </a>
+        <a href="https://github.com/SAZZAD-AMT" target="_blank" class="contact-link">
+          <div class="contact-icon">⌥</div>
+          <div>
+            <div style="font-size:0.7rem; color:var(--muted); margin-bottom:2px; font-family:'Space Mono',monospace;">GitHub</div>
+            github.com/SAZZAD-AMT
+          </div>
+        </a>
+        <div class="contact-link" style="cursor:default;">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div style="font-size:0.7rem; color:var(--muted); margin-bottom:2px; font-family:'Space Mono',monospace;">Location</div>
+            Basundhara RA, Dhaka, Bangladesh
+          </div>
+        </div>
+        <div style="margin-top: 20px; padding: 20px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg);">
+          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--accent); letter-spacing:0.1em; margin-bottom:10px;">LANGUAGES</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+              <span>Bangla</span><span style="color:var(--accent); font-family:'Space Mono',monospace; font-size:0.7rem;">Native</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+              <span>English</span><span style="color:var(--accent); font-family:'Space Mono',monospace; font-size:0.7rem;">Fluent</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+              <span>Hindi / Urdu</span><span style="color:var(--accent); font-family:'Space Mono',monospace; font-size:0.7rem;">Conversational</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Sazzad Hossen &nbsp;·&nbsp; Data Engineer &nbsp;·&nbsp; Dhaka, Bangladesh</p>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx - 6 + 'px';
+    cursor.style.top = my - 6 + 'px';
+  });
+  function animRing() {
+    rx += (mx - rx) * 0.15;
+    ry += (my - ry) * 0.15;
+    ring.style.left = rx - 18 + 'px';
+    ring.style.top = ry - 18 + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.skill-card, .project-card, .edu-card, .timeline-item, .research-item, .cert-pill').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    observer.observe(el);
+  });
+</script>
 </body>
 </html>
