@@ -250,7 +250,7 @@
   }
 
   .hero-photo {
-    width: 260px; height: 320px;
+    width: 380px; height: 480px;
     object-fit: cover;
     object-position: top;
     border-radius: 4px;
@@ -623,32 +623,111 @@
     text-transform: uppercase;
   }
 
-  /* RESEARCH */
+/* RESEARCH */
   .research-list {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
   }
-
+ 
   .research-item {
+    display: flex;
+    align-items: stretch;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-left: 3px solid var(--accent2);
-    border-radius: 0 4px 4px 0;
-    padding: 20px 24px;
-    font-size: 0.92rem;
-    line-height: 1.5;
+    border-radius: 6px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text);
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+ 
+  .research-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(124,58,237,0.04), transparent 60%);
+    pointer-events: none;
+    transition: opacity 0.3s;
+    opacity: 1;
+  }
+ 
+  .research-item:hover {
+    transform: translateX(6px);
+    border-color: var(--accent2);
+    box-shadow: -4px 0 0 var(--accent2), 0 4px 24px rgba(124,58,237,0.15);
+  }
+ 
+  .research-item:hover::before { opacity: 0; }
+ 
+  .research-num-block {
+    min-width: 70px;
+    background: rgba(124,58,237,0.08);
+    border-right: 1px solid rgba(124,58,237,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 12px;
+    flex-shrink: 0;
     transition: background 0.2s;
   }
-
-  .research-item:hover { background: var(--surface2); }
-
+ 
+  .research-item:hover .research-num-block {
+    background: rgba(124,58,237,0.18);
+  }
+ 
   .research-num {
     font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.58rem;
     color: var(--accent2);
-    margin-bottom: 4px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+ 
+  .research-body {
+    padding: 20px 24px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+ 
+  .research-title {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+ 
+  .research-item:hover .research-title { color: #fff; }
+ 
+  .research-arrow {
+    font-size: 1.1rem;
+    color: var(--accent2);
+    opacity: 0;
+    flex-shrink: 0;
+    transform: translate(-4px, 4px);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+ 
+  .research-item:hover .research-arrow {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+ 
+  .research-source {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--accent3);
     letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 5px;
   }
 
   /* CERTS */
@@ -798,7 +877,7 @@
   <div class="hero-glow2"></div>
   <div class="hero-content">
     <div>
-      <div class="hero-tag fade-up">Data Engineer · Big Data · ML</div>
+      <div class="hero-tag fade-up">Data Engineer · Data Analyst · Machine Learning · Artificial Intelligence</div>
       <h1 class="hero-name fade-up delay-1">Sazzad<br><span>Hossen</span></h1>
       <p class="hero-title fade-up delay-2">Senior Deputy Assistant Director @ Walton Hi-Tech Industries PLC.</p>
       <blockquote class="hero-quote fade-up delay-3">
@@ -810,7 +889,18 @@
       </div>
     </div>
     <div class="hero-photo-wrap fade-up delay-2">
-      <img src="https://github.com/SAZZAD-AMT/s.portfolio.con/blob/main/sazzad_formal_2026.jpg?raw=true" alt="Sazzad Hossen" class="header-image">
+      <img src="https://github.com/SAZZAD-AMT/s.portfolio.con/blob/main/sazzad_formal_2026.jpg?raw=true"
+           alt="Sazzad Hossen" class="hero-photo" id="heroImg"
+           onerror="this.style.display='none';document.getElementById('img-fallback').style.display='flex';">
+      <div id="img-fallback" style="display:none;width:380px;height:480px;background:linear-gradient(135deg,#0d1120,#141828);border-radius:4px;align-items:center;justify-content:center;flex-direction:column;gap:12px;border:1px solid rgba(0,229,255,0.2);">
+        <div style="font-size:3.5rem;">&#128100;</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--accent);letter-spacing:0.1em;text-align:center;padding:0 16px;">
+          IMAGE NOT FOUND<br>
+          <span style="color:var(--muted);font-size:0.58rem;margin-top:6px;display:block;line-height:1.6;">
+            Go to your GitHub repo<br>and check the exact filename
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -818,11 +908,11 @@
 <!-- STATS -->
 <div class="stats-strip">
   <div class="stat">
-    <span class="stat-num">2+</span>
+    <span class="stat-num">3+</span>
     <span class="stat-label">Years Experience</span>
   </div>
   <div class="stat">
-    <span class="stat-num">15+</span>
+    <span class="stat-num">20+</span>
     <span class="stat-label">Projects Delivered</span>
   </div>
   <div class="stat">
@@ -830,7 +920,7 @@
     <span class="stat-label">Research Papers</span>
   </div>
   <div class="stat">
-    <span class="stat-num">3</span>
+    <span class="stat-num">4</span>
     <span class="stat-label">Cloud Platforms</span>
   </div>
 </div>
@@ -967,15 +1057,33 @@
         <li>Manage pipeline deployment and orchestration on Kubernetes for scalability.</li>
       </ul>
       <div class="timeline-tech">
-        <span class="tech-tag">Airflow</span>
-        <span class="tech-tag">Spark</span>
+        <span class="tech-tag">Apache Airflow</span>
+        <span class="tech-tag">Apache Kafka</span>
+        <span class="tech-tag">Debezium (CDC)</span>
+        <span class="tech-tag">Apache Spark</span>
         <span class="tech-tag">Kubernetes</span>
-        <span class="tech-tag">Iceberg</span>
+        <span class="tech-tag">Apache Iceberg</span>
         <span class="tech-tag">MinIO/S3</span>
         <span class="tech-tag">Power BI</span>
+        <span class="tech-tag">Data Lake</span>
+        <span class="tech-tag">Data Warehouse</span>
+        <span class="tech-tag">ETL/ELT Pipelines</span>
+        <span class="tech-tag">Real-Time Streaming</span>
         <span class="tech-tag">Python</span>
         <span class="tech-tag">Trino</span>
+        <span class="tech-tag">Complex SQL</span>
         <span class="tech-tag">REST API</span>
+        <span class="tech-tag">Git & GitHub</span>
+        <span class="tech-tag">Linux</span>
+        <span class="tech-tag">CI/CD</span>
+        <span class="tech-tag">Data Modeling</span>
+        <span class="tech-tag">Web Scraping</span>
+        <span class="tech-tag">Cloud Computing</span>
+        <span class="tech-tag">GCP</span>
+        <span class="tech-tag">AWS</span>
+        <span class="tech-tag">Azure</span>
+        <span class="tech-tag">Machine Learning</span>
+        <span class="tech-tag">AI Engineering</span>
       </div>
     </div>
 
@@ -999,7 +1107,11 @@
         <span class="tech-tag">QuickSight</span>
         <span class="tech-tag">Pentaho</span>
         <span class="tech-tag">Salesforce</span>
-        <span class="tech-tag">SQL</span>
+        <span class="tech-tag">Complex SQL</span>
+        <span class="tech-tag">Power BI</span>
+        <span class="tech-tag">Data Lake</span>
+        <span class="tech-tag">Data Warehouse</span>
+        <span class="tech-tag">ETL/ELT Pipelines</span>
       </div>
     </div>
 
@@ -1092,34 +1204,90 @@
   <div class="section-label">05 — Research</div>
   <h2 class="section-title">Research<br>Papers</h2>
   <div class="research-list">
-    <div class="research-item">
-      <div class="research-num">Paper 01</div>
-      A Policy Framework for Cost Effective Production of Electricity using Renewable Energy
-    </div>
-    <div class="research-item">
-      <div class="research-num">Paper 02</div>
-      Medical Insurance Cost Prediction Using Machine Learning
-    </div>
-    <div class="research-item">
-      <div class="research-num">Paper 03</div>
-      A Brain MRI based Hippocampus Segmentation System using Image Processing
-    </div>
-    <div class="research-item">
-      <div class="research-num">Paper 04</div>
-      Web-Based Virtual Laboratories: Augmenting Science Education Beyond the Classroom
-    </div>
-    <div class="research-item">
-      <div class="research-num">Paper 05</div>
-      A System for Garbage Detection and Classification Using Machine Learning
-    </div>
-    <div class="research-item">
-      <div class="research-num">Paper 06</div>
-      Enhancing Banking Security Using Big Data Analytics and Machine Learning for Fraud Detection
-    </div>
-    <div class="research-item">
-      <div class="research-num">Paper 07</div>
-      Fast, Fault-Tolerant, and Affordable: A Modern Data Lakehouse ETL Pipeline for Emerging Economies
-    </div>
+    <a class="research-item" href="https://link.springer.com/chapter/10.1007/978-3-031-50330-6_33" target="_blank" rel="noopener">
+      <div class="research-num-block">
+        <span class="research-num">Paper 01</span>
+      </div>
+      <div class="research-body">
+        <div>
+          <div class="research-title">A Policy Framework for Cost Effective Production of Electricity using Renewable Energy</div>
+          <div class="research-source">Springer</div>
+        </div>
+        <span class="research-arrow">↗</span>
+      </div>
+    </a>
+    <a class="research-item" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=OWebBUYAAAAJ&citation_for_view=OWebBUYAAAAJ:UeHWp8X0CEIC" target="_blank" rel="noopener">
+      <div class="research-num-block">
+        <span class="research-num">Paper 02</span>
+      </div>
+      <div class="research-body">
+        <div>
+          <div class="research-title">Medical Insurance Cost Prediction Using Machine Learning</div>
+          <div class="research-source">Google Scholar</div>
+        </div>
+        <span class="research-arrow">↗</span>
+      </div>
+    </a>
+    <a class="research-item" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=OWebBUYAAAAJ&citation_for_view=OWebBUYAAAAJ:Tyk-4Ss8FVUC" target="_blank" rel="noopener">
+      <div class="research-num-block">
+        <span class="research-num">Paper 03</span>
+      </div>
+      <div class="research-body">
+        <div>
+          <div class="research-title">A Brain MRI based Hippocampus Segmentation System using Image Processing</div>
+          <div class="research-source">Google Scholar</div>
+        </div>
+        <span class="research-arrow">↗</span>
+      </div>
+    </a>
+    <a class="research-item" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=OWebBUYAAAAJ&citation_for_view=OWebBUYAAAAJ:zYLM7Y9cAGgC" target="_blank" rel="noopener">
+      <div class="research-num-block">
+        <span class="research-num">Paper 04</span>
+      </div>
+      <div class="research-body">
+        <div>
+          <div class="research-title">Web-Based Virtual Laboratories: Augmenting Science Education Beyond the Classroom</div>
+          <div class="research-source">Google Scholar</div>
+        </div>
+        <span class="research-arrow">↗</span>
+      </div>
+    </a>
+    <a class="research-item" href="https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=OWebBUYAAAAJ" target="_blank" rel="noopener">
+      <div class="research-num-block">
+        <span class="research-num">Paper 05</span>
+      </div>
+      <div class="research-body">
+        <div>
+          <div class="research-title">A System for Garbage Detection and Classification Using Machine Learning</div>
+          <div class="research-source">Google Scholar</div>
+        </div>
+        <span class="research-arrow">↗</span>
+      </div>
+    </a>
+    <a class="research-item" href="https://www.researchgate.net/publication/397609114_Enhancing_Banking_Security_Using_Big_Data_Analytics_and_Machine_Learning_for_Fraud_Detection" target="_blank" rel="noopener">
+      <div class="research-num-block">
+        <span class="research-num">Paper 06</span>
+      </div>
+      <div class="research-body">
+        <div>
+          <div class="research-title">Enhancing Banking Security Using Big Data Analytics and Machine Learning for Fraud Detection</div>
+          <div class="research-source">ResearchGate</div>
+        </div>
+        <span class="research-arrow">↗</span>
+      </div>
+    </a>
+    <a class="research-item" href="https://ieeexplore.ieee.org/abstract/document/11491349" target="_blank" rel="noopener">
+      <div class="research-num-block">
+        <span class="research-num">Paper 07</span>
+      </div>
+      <div class="research-body">
+        <div>
+          <div class="research-title">Fast, Fault-Tolerant, and Affordable: A Modern Data Lakehouse ETL Pipeline for Emerging Economies</div>
+          <div class="research-source">IEEE Xplore</div>
+        </div>
+        <span class="research-arrow">↗</span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -1163,12 +1331,13 @@
   <h2 class="section-title">Certificates &<br>Achievements</h2>
   <div class="certs-grid">
     <span class="cert-pill">Introduction to Data Science</span>
-    <span class="cert-pill">Data Analytics Essentials</span>
+    <span class="cert-pill">Data Analytics Essentials - Cisco</span>
     <span class="cert-pill">Cyber Threat Management</span>
     <span class="cert-pill">Ethical Hacker</span>
     <span class="cert-pill">IoT & Cloud Enabled Renewable Energy</span>
     <span class="cert-pill">Introduction to Cybersecurity</span>
     <span class="cert-pill">RoboTech Valley — Information Secretary</span>
+    <span class="cert-pill">Engineer Data for Predictive Modeling with BigQuery ML Skill Badge - Google Cloud</span>
   </div>
 </section>
 
@@ -1195,6 +1364,13 @@
           <div>
             <div style="font-size:0.7rem; color:var(--muted); margin-bottom:2px; font-family:'Space Mono',monospace;">Phone</div>
             +880 1714 168 209
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/sazzad-amt/" target="_blank" class="contact-link">
+          <div class="contact-icon">in</div>
+          <div>
+            <div style="font-size:0.7rem; color:var(--muted); margin-bottom:2px; font-family:'Space Mono',monospace;">LinkedIn</div>
+            linkedin.com/in/sazzad-amt
           </div>
         </a>
         <a href="https://github.com/SAZZAD-AMT" target="_blank" class="contact-link">
@@ -1231,7 +1407,7 @@
 </div>
 
 <footer>
-  <p>© 2025 Sazzad Hossen &nbsp;·&nbsp; Data Engineer &nbsp;·&nbsp; Dhaka, Bangladesh</p>
+  <p>© 2026 Sazzad Hossen &nbsp;·&nbsp; Senior Data Engineer & Analyst &nbsp;·&nbsp; Dhaka, Bangladesh</p>
 </footer>
 
 <script>
